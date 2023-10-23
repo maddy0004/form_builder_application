@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            
+            display: flex;
+            height: 10px;
+        }
+
+        .draggable {
+            cursor: move;
+        }
+
+        #form-container {
+            margin-top:120px;
+            display: flex;
+            width:1430px;
+            height:490px;
+            flex-direction: column;
+            align-items: center;
+            padding:20px;
+            /*border: 2px solid rgb(84, 42, 255);*/
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0.25, 0.25, 0.25, 0.20);
+            /*background: linear-gradient(to right, rgb(95, 121, 251) , rgb(124, 242, 244));*/
+        }
+
+        #toolbox {
+            position: absolute;
+            display:flex;
+            flex-direction: row;
+            top:35px;/*top: 630px;*/
+            height:100px;
+            width:1470px;
+            z-index: 90;
+            /*background-color:rgb(207, 252, 246);*/
+            background-color:rgb(255, 205, 118);/*#6b5697e0;/*#b59beee0;/*#7bd6dee0;/*#4f4760e0;/* rgb(51, 58, 58);*/
+            text-align: center;
+            margin-top:10px;
+            gap:60px;
+            border-radius: 5px;
+            
+            border: 2px solid #c78b00;
+            
+
+          /*.bottom-toolbox {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+          }   */ 
+        }
+
+        #Label {
+        padding: 10px;
+        z-index: 10;
+        height:15px;
+        margin-left:60px;
+        background-color:#8c4effe3;/*#8c4effe3;*/
+         color:#ffffff;
+        /* border: 1.5px solid #ffffff;*/
+         margin-top:18px;
+         border-radius: 10px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+         cursor: pointer;
+  }
+
+  
+
+  #Textbox {
+        padding: 10px;
+        z-index: 10;
+        height:15px;
+        margin-top:25px;
+        margin-left:50px;
+        background-color: #8c4effe3;
+         color:#ffffff;
+         /*border: 1.5px solid #ffffff;*/
+         margin-top:18px;
+         cursor: pointer;
+         border-radius: 10px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #Button {
+        padding: 10px;
+        z-index: 10;
+        height:15px;
+        margin-top:25px;
+        margin-left:50px;
+        background-color: #8c4effe3;
+         color:#ffffff;
+         /*border: 1.5px solid #ffffff;*/
+         margin-top:18px;
+         border-radius: 10px;
+         cursor: pointer;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #Checkbox {
+        padding: 10px;
+        z-index: 10;
+        height:15px;
+        margin-top:25px;
+        margin-left:50px;
+        background-color: #8c4effe3;
+         color:#ffffff;
+         /*border: 1.5px solid #ffffff;*/
+         margin-top:18px;
+         cursor: pointer;
+         border-radius: 10px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  
+  #Radiobutton {
+        padding: 10px;
+        cursor: move;
+        z-index: 10;
+        height:15px;
+        margin-top:25px;
+        margin-left:50px;
+        background-color: #8c4effe3;
+         color:#ffffff;
+         /*border: 1.5px solid #ffffff;*/
+         margin-top:18px;
+         cursor: pointer;
+         border-radius: 10px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  #Table {
+        padding: 10px;
+        cursor: move;
+        z-index: 10;
+        height:15px;
+        margin-top:25px;
+        margin-left:50px;
+        background-color: #8c4effe3;
+         color:#ffffff;
+         /*border: 1.5px solid #ffffff;*/
+         margin-top:18px;
+         cursor: pointer;
+         border-radius: 10px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #Navigation {
+        padding: 10px;
+        cursor: move;
+        z-index: 10;
+        height:15px;
+        margin-top:25px;
+        margin-left:50px;
+        background-color: #8c4effe3;
+         color:#ffffff;
+         /*border: 1.5px solid #ffffff;*/
+         margin-top:18px;
+         cursor: pointer;
+         border-radius: 10px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #Image {
+        padding: 10px;
+        cursor: move;
+        z-index: 10;
+        height:15px;
+        margin-top:25px;
+        margin-left:50px;
+        background-color: #8c4effe3;
+         color:#ffffff;
+        /* border: 1.5px solid #ffffff;*/
+         margin-top:18px;
+         border-radius: 10px;
+         cursor: pointer;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+         border:2px #8c4effe3;
+  }
+  #save-btn
+  {    
+    padding:2px;    
+    /*border: 1px solid #3d3d3d;*/
+    z-index: 10;
+    margin-top: 710px;/*15px;*/
+    margin-left:1240px;   
+    width:80px;
+    background-color: rgb(196, 205, 253);
+    /*border:2px solid rgb(84, 42, 255);*/
+    transition: background-color 0.5s;
+
+  }
+  #save-btn:hover {
+    background-color: rgb(184, 248, 255);
+}
+  #clear-btn
+  {    
+    padding:2px;    
+    z-index: 10;
+    margin-top: 710px;/*15*/
+    margin-left:1380px;   
+    width:80px;
+    /*border:2px solid rgb(84, 42, 255);*/
+    /*border: 1px solid #3d3d3d;*/
+    background-color: rgb(196, 205, 253);
+    transition: background-color 0.5s;
+
+  }
+  #clear-btn:hover {
+    background-color: rgb(184, 248, 255);
+   }
+
+   body {
+    /*background: linear-gradient(to right, rgb(95, 121, 251) , rgb(124, 242, 244));*/
+    background: linear-gradient(to right, rgb(118, 216, 255) , rgb(255, 181, 91));
+     
+  }
+
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px; /* Preferred icon size */
+    vertical-align: middle; /* This line is used to align the icon vertically */
+    color:#8c4effe3;
+    /*margin-top:58px;
+    margin-right:0px;
+    margin-left:0px;
+    margin-bottom:20px ;*/
+    position:absolute;
+    margin-top:58px;
+    margin-left:50px;
+    gap:20px;
+    transform: translateX(-50%);
+}
+
+.edit {
+ position: absolute;
+ top: 0;
+ left: 34px;
+}
+
+.title {
+ position: absolute;
+ top: 0;
+ left: 208px;
+}
+
+.button {
+ position: absolute;
+ top: 0;
+ left:387px;
+}
+
+.checkbox {
+ position: absolute;
+ top: 0;
+ left: 571px;
+}
+
+.radiobutton {
+ position: absolute;
+ top: 0;
+ left: 780px;
+}
+
+.table {
+ position: absolute;
+ top: 0;
+ left: 965px;
+}
+
+.nav {
+ position: absolute;
+ top: 0;
+ left: 1150px;
+}
+
+.image{
+ position: absolute;
+ top: 0;
+ left: 1335px;
+}
+
+#preview-btn{
+  margin-top:  710px;
+  margin-left: 170px;
+  padding:2px;
+  width:80px;
+
+}
+
+#publish-btn{
+  margin-top: 710px;
+  margin-left: 30px;
+  padding:2px;
+  width:80px;
+
+}
+
+#preview-btn:hover {
+    background-color: rgb(194, 113, 255);
+}
+
+#publish-btn:hover {
+    background-color: rgb(194, 113, 255);
+}
+
+#simage
+{
+  color:grey;
+}
+
+h3 {
+  color: #5c23bf
+}
+</style>
+  
+ <h3>FORM BUILDER</h3>
+
+ 
+
+</head>
+<html>
+<head>
+ <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ <!DOCTYPE html>
+<html>
+
+<body>
+
+<p id="url-output"></p>
+<button id="preview-btn" onclick="openPreview()">Preview</button>
+<button id="publish-btn">Publish</button>
+<button id="save-btn">Save</button>
+<button id="clear-btn">Clear</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
+</head>
+<head>
+  
+  <div id="container">
+    <div id="toolbox">
+      <div id="Label" class="draggable" draggable="true">Label</div>
+      <div id="Textbox" class="draggable" draggable="true">Textbox</div>
+      <div id="Button" class="draggable" draggable="true">Button</div>
+      <div id="Checkbox" class="draggable" draggable="true">Checkbox</div>
+      <div id="Radiobutton" class="draggable" draggable="true">Radiobutton</div>
+      <div id="Table" class="draggable" draggable="true">Table</div>
+      <div id="Navigation" class="draggable" draggable="true">Navigation</div>
+      <div id="Image" class="draggable" draggable="true">Image</div>
+      
+        
+      <div class="icon-container">
+      <i class="material-icons edit">edit</i>
+      <i class="material-icons title">title</i>
+      <i class="material-icons button">menu</i>
+      <i class="material-icons checkbox">&#xE834;</i>
+      <i class="material-icons radiobutton">&#xE837;</i>
+      <i class="material-icons table">&#xE8EF;</i>
+      <i class="material-icons nav">navigation</i>
+      <i class="material-icons image">image</i>
+    </div>
+  </div>
+  <div id="form-container"></div>
+</div>
+<div id="imageContainer"></div>
+<a id="link"></a>
+
+<script src="script.js"></script>
+        
+<input type="file" id="fileInput" style="display:none" accept="image/*" />
+<div id="'preview"></div>
+
+
+<script>
+
+    //preview
+
+    function openPreview() {
+    var container = document.getElementById('form-container');
+    var newWindow = window.open("", "_blank");
+    newWindow.document.write(container.innerHTML);
+    newWindow.document.close(); 
+   }
+
+   
+
+    //publish
+    document.getElementById('publish-btn').addEventListener('click', function () {
+    const container = document.getElementById('form-container');
+    //const url = 'data:text/html;charset=utf-8,' + encodeURIComponent(container.innerHTML);
+
+
+    const link = document.getElementById('link');
+    const blob = new Blob([container.innerHTML], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    link.href = url;
+    link.innerHTML = url;
+    alert('Your form is published !!! \n the URL of the form is: ' + link);});
+
+
+
+document.getElementById('preview-btn').style.position = 'absolute';
+document.getElementById('preview-btn').style.top = '0';
+document.getElementById('preview-btn').style.left = '0';
+document.getElementById('preview-btn').style.right = '20';
+
+document.getElementById('publish-btn').style.position = 'absolute';
+document.getElementById('publish-btn').style.top = '0';
+document.getElementById('publish-btn').style.left = '0';
+document.getElementById('publish-btn').style.right = '0';
+
+document.getElementById('save-btn').style.position = 'absolute';
+document.getElementById('save-btn').style.top = '0';
+document.getElementById('save-btn').style.left = '0';
+document.getElementById('save-btn').style.right = '0';
+
+document.getElementById('clear-btn').style.position = 'absolute';
+document.getElementById('clear-btn').style.top = '0';
+document.getElementById('clear-btn').style.left = '0';
+document.getElementById('clear-btn').style.right = '0';
+
+//draggable        
+
+document.querySelectorAll('.draggable').forEach(item => {
+            item.addEventListener('dragstart', e => {
+              
+                e.dataTransfer.setData('text/plain', e.target.id);
+            });
+        });
+        
+        
+        /*var element = document.getElementById('fileInput');
+        element.dataTransfer.setData('fileInput', e.target.id);
+        //style.backgroundImage = 'url("path/to/your/image.jpg")';*/
+
+        document.querySelector('#form-container').addEventListener('dragover', e => {
+            e.preventDefault();
+        });
+
+        document.querySelector('#form-container').addEventListener('drop', e => {
+            
+            e.preventDefault();  
+          const data = e.dataTransfer.getData('text/plain');
+            if (data=== 'Image')
+            {
+            var simage = document.createElement("BUTTON");
+            simage.innerHTML = "select Image";
+            simage.style.position = "absolute";
+            simage.style.top = e.clientY + "px";
+            simage.style.left = e.clientX + "px";
+            e.target.appendChild(simage);
+            //<button id="Image" class="draggable">Image</button>
+            
+            }
+            else
+            {
+            e.preventDefault();
+            const input = document.createElement('input');
+            input.setAttribute('type', data.toLowerCase());
+            input.setAttribute('placeholder', data);
+            input.classList.add('draggable');
+            e.target.appendChild(input);
+           }
+        });  
+
+//save & clear
+    document.getElementById('save-btn').addEventListener('click', function() {
+    var container = document.getElementById('container');
+    var content = container.innerHTML;
+
+    // Save the content somewhere (e.g., localStorage, server, etc.)
+    localStorage.setItem('savedContent', content);
+});
+
+document.getElementById('clear-btn').addEventListener('click', function() {
+    var container = document.getElementById('form-container');
+    container.innerHTML = '';
+});
+
+////////////////////////
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+    addButton(ev);
+}
+
+</script>
+</head>
+</html>
